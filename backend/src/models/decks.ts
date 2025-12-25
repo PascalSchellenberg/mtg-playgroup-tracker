@@ -6,20 +6,21 @@
  * 
  */
 
-interface Deck {
+export interface Deck {
 
     id: number,
     /** Custom Name a user can give the deck */
     name: string,
     owner: string,
     commander: string,
-    cards: Card[];
+    cards: DeckCard[];
 
 }
 
-interface Card {
+export interface DeckCard {
 
     name: string,
+    count: number,
     /** optional set identifier if desired */
     set?: string,
 
