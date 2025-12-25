@@ -1,0 +1,13 @@
+{
+  // Visit https://aka.ms/tsconfig to read more about this file
+  "compilerOptions": {
+
+    "module": "nodenext",
+    "target": "ES2020",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "strict": true,
+    "rootDir": "./src",
+    "outDir": "./dist"
+  }
+}
