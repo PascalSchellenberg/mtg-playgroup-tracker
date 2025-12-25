@@ -6,6 +6,7 @@ app.get("/health", (_, res) => {
     res.json({status: "ok"})
 });
 const PORT = 3000
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`)
 });
