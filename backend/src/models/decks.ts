@@ -8,7 +8,7 @@
 
 export interface Deck {
 
-    id: number,
+    id: string,
     /** Custom Name a user can give the deck */
     name: string,
     owner: string,
@@ -16,21 +16,23 @@ export interface Deck {
     cards: DeckCard[];
 
 }
+export interface Card {
 
-export interface DeckCard {
-
+    id: string,
     name: string,
-    count: number,
-    /** optional set identifier if desired */
-    set?: string,
+    scryfallId : number
 
 }
-/** check if a deck is a valid EDH deck (100 singletons including commander
- * @param deck to validate
- * @returns True if the deck is a legal EDH deck
- */
-export function isLegalDeck(deck: Deck) : boolean {
-    
-    return deck.cards.length == 100;
+export interface ParsedCard {
+    scryfallId: number,
+    name: string,
+    count: number
+}
+export interface DeckCard {
+
+    deckId: string,
+    cardId: string, // internal ID
+    scryfallId: string,
+    count: number,
 
 }

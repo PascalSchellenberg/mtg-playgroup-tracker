@@ -3,8 +3,6 @@ import {parse} from "csv-parse";
 import {DeckCard} from "../models/decks";
 
 
-
-
 /**
  * Determine if a card is a basic land
  * @param cardname Name of the card
@@ -38,10 +36,7 @@ export async function parseDecklist(filepath: string) : Promise<DeckCard[]> {
                 if  (quantity > 1 && !isBasic(cardname)){
                     reject("multiples of a non-basic-land card!")
                 }
-                cards.push({
-                    name: cardname,
-                    count: quantity
-                 });
+                //TODO: LOGIC FOR ADDING DECKCARDS
 
             })
             .on("end", () => resolve(cards))
