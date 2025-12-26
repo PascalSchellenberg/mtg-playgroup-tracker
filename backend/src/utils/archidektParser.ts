@@ -28,15 +28,35 @@ export async function fetchArchidektJSON(url: string) {
 export async function parseArchidektURL(url : string) : Promise<ParsedCard[]> {
 
    const deck_json = await(fetchArchidektJSON(url));
+   const sideboards = ["Maybeboard", "Sideboard"];
+   const parsedCards : ParsedCard[] = [];
    
-   const parsedCards: ParsedCard[] = deck_json.cards.map((c: any) => ({
+
+
+   for(const card of deck_json.cards){
+
+    if (!card.categories.some((cat :any)  => sideboards.includes(cat))){
+        console.log(card.categories);
+        parsedCards.push({
+            name: card.card.oracleCard.name,
+            count: card.quantity,
+            scryfallId: card.card.uid
+        });
+    }
+
+   }
+   /** 
+   const parsedCards: ParsedCard[] = main_cards.cards.map((c: any) => ({
         name: c.card.oracleCard.name,
         count: c.quantity,
         scryfallId : c.card.uid
    }));
+   */
    console.log(parsedCards);
+   console.log(parsedCards.length);
    return parsedCards;
 }
+
 
 async function test(url :string) {
 

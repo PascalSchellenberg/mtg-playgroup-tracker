@@ -20,11 +20,11 @@ export interface Card {
 
     id: string,
     name: string,
-    scryfallId : number
+    scryfallId : string
 
 }
 export interface ParsedCard {
-    scryfallId: number,
+    scryfallId: string,
     name: string,
     count: number
 }
@@ -32,7 +32,6 @@ export interface DeckCard {
 
     deckId: string,
     cardId: string, // internal ID
-    scryfallId: string,
     count: number,
 
 }
