@@ -45,22 +45,9 @@ export async function parseArchidektURL(url : string) : Promise<ParsedCard[]> {
     }
 
    }
-   /** 
-   const parsedCards: ParsedCard[] = main_cards.cards.map((c: any) => ({
-        name: c.card.oracleCard.name,
-        count: c.quantity,
-        scryfallId : c.card.uid
-   }));
-   */
-   console.log(parsedCards);
-   console.log(parsedCards.length);
+   
+   
+   console.log("Added a few new cards: ", parsedCards.length);
    return parsedCards;
 }
 
-
-async function test(url :string) {
-
-    parseArchidektURL(URL);
-
-}
-test(URL);

@@ -19,12 +19,23 @@ async function addDeck(deckname : string, owner : string, commander: string) : P
 
 }
 async function upsertCards(decklist : ParsedCard[]){
+    const values = [];
+    const placeholders = [];
 
-    
+    let idx = 1;
+    for (let pc of decklist){
+        placeholders.push(`($${idx}, $${idx+1})`);
+        values.push(pc.name, pc.scryfallId);
+        idx += 2;
+    }
+
+
+    const query = `INSERT INTO cards (name, scryfall_id) VALUES ${placeholders.join(", ")}
+                    ON CONFLICT (scryfall_id) DO NOTHING`;
+    await pool.query(query, values);
+    console.log("Inserted new Cards into Database!")
 
 }
-
-
 
 async function test(deckname : string, owner : string, commander: string, decklistURL : string) {
 
@@ -39,4 +50,9 @@ async function testAdd(){
     const deck = `${originalString}${timestamp}`;
     addDeck(deck, "pesche", "sygg");
 }
-testAdd();
+async function testAddCards(){
+    const URL = "https://archidekt.com/decks/17250632/azula_dimir";
+    const decklist = await parseArchidektURL(URL);
+    upsertCards(decklist);
+}
+testAddCards();
