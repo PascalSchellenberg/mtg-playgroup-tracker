@@ -17,8 +17,7 @@ export default function CreateDeckPage() {
     });
     console.log("Deck created:", response.data);
     alert("Deck created successfully!");
-
-
+    
     setOwner("");
     setDeckName("");
     setCommander("");
