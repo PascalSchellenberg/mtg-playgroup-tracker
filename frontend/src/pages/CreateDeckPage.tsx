@@ -9,6 +9,7 @@ export default function CreateDeckPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+        console.log("posting");
         const response = await axios.post("http://localhost:3000/decks",{
             owner,
             deckName,
@@ -17,7 +18,7 @@ export default function CreateDeckPage() {
     console.log("Deck created:", response.data);
     alert("Deck created successfully!");
 
-    
+
     setOwner("");
     setDeckName("");
     setCommander("");
@@ -37,7 +38,7 @@ export default function CreateDeckPage() {
           Create New Deck
         </h1>
 
-        <form className="space-y-4">
+        <form className="space-y-4" onSubmit={handleSubmit}>
           <div>
             <label className="block text-sm font-medium mb-1">
               Owner
