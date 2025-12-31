@@ -13,7 +13,8 @@ export interface Deck {
     name: string,
     owner: string,
     commander: string,
-    cards: DeckCard[];
+    commadnerScryfallId?: string,
+    cards?: DeckCard[];
 
 }
 export interface Card {
